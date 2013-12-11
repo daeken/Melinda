@@ -5,7 +5,7 @@ obj:
 	mkdir -p obj
 
 obj/all_functions.asm: obj functions/*
-	python -c "import sys; print '\n'.join('.include \"' + x + '\"' for x in sys.argv[1:])" functions/*.asm > obj/all_functions.asm
+	python -c "import sys; print('\n'.join('.include \"' + x + '\"' for x in sys.argv[1:]))" functions/*.asm > obj/all_functions.asm
 
 obj/melinda.o: *.asm obj/all_functions.asm
 	mips-linux-as main.asm -o $@
