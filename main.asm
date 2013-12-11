@@ -9,6 +9,7 @@ j initBios
 
 .org 0x200
 .include "init.asm"
+.include "obj/all_functions.asm"
 
 /* Required to pad the BIOS binary */
 .org 0x0080000
