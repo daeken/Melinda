@@ -2,13 +2,10 @@ all: melinda.bin
 	
 
 objdir:
-	-mkdir obj
+	mkdir -p obj
 
-obj/melinda.s: objdir main.s
-	cpp -P < main.s > $@
-
-obj/melinda.o: obj/melinda.s
-	mips-linux-as obj/melinda.s -o $@
+obj/melinda.o: objdir *.asm
+	mips-linux-as main.asm -o $@
 
 obj/melinda.tmp: obj/melinda.o
 	mips-linux-ld -o $@ obj/melinda.o --section-start=.text=0xBFC00000
