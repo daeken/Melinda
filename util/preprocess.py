@@ -14,14 +14,14 @@ def rewrite(source, sfn):
 				instances[name] = instances[name][0], True
 			else:
 				instances[name] = instances[name][0] + 1, True
-		return '_%s_%s%i%s' % (sfn, name, instances[name][0], isdef)
+		return '_%s_%i%s%s' % (sfn, instances[name][0], name, isdef)
 	source = list(source.split('\n'))
 	for i, line in enumerate(source):
 		tline = line.split('#')[0]
 		if ':' in tline and tline.strip()[0] != '@':
 			for name in instances:
 				instances[name] = instances[name][0] + 1, False
-		source[i] = re.sub(r'@([a-zA-Z0-9_.]+)(:?)', rep, line)
+		source[i] = re.sub(r'@([a-zA-Z0-9_.\\@]+)(:?)', rep, line)
 
 	return '\n'.join(source)
 
