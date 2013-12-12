@@ -3,6 +3,7 @@
 # memcpy(src, dest, n)
 memcpy:
 export_memcpy:
+	pro
 	beq $0, $a2, @ret
 
 	@loop:
@@ -14,4 +15,4 @@ export_memcpy:
 		bne $0, $a2, @loop
 
 	@ret:
-		jr $ra
+		ret

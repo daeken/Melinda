@@ -3,6 +3,7 @@
 # memset(dest, fill, n)
 memset:
 export_memset:
+	pro
 	beq $0, $a2, @ret
 
 	@loop:
@@ -12,4 +13,4 @@ export_memset:
 		bne $0, $a2, @loop
 
 	@ret:
-		jr $ra
+		ret

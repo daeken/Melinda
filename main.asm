@@ -9,6 +9,7 @@ j initBios
 .org 0x100
 
 .org 0x200
+.include "misc.asm"
 .include "init.asm"
 .include "obj/all_functions.asm"
 
