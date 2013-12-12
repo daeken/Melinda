@@ -11,6 +11,6 @@ def preprocess(fn):
 		with open(fn, 'r') as ifp:
 			ofp.write(ifp.read().replace('@', 'L'))
 
-map(preprocess, glob('*.asm'))
-map(preprocess, glob('functions/*.asm'))
-map(preprocess, glob('obj/*.asm'))
+list(map(preprocess, glob('*.asm')))
+list(map(preprocess, glob('functions/*.asm')))
+list(map(preprocess, glob('obj/*.asm')))
