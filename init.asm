@@ -1,8 +1,13 @@
+.macro debug
+	.long 0xDEADBEEF
+.endm
+
 abort:
-	j abort # this should throw an exception to cause the emulator to bail
+	j abort # should probably kill everything
 
 abort_debug:
-	j abort # this should dump debug information
+	debug
+	j abort
 
 initBios:
 	jal initRAM
@@ -17,4 +22,5 @@ initRAM:
 	sw $t0, 0x000000B0
 	li $t0, dispatch_C
 	sw $t0, 0x000000C0
+	debug
 	jr $ra
