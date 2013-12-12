@@ -5,11 +5,12 @@
 __start:
 j initBios
 
-.org 0x100 /* Header */
+# Header
+.org 0x100
 
 .org 0x200
 .include "init.asm"
 .include "obj/all_functions.asm"
 
-/* Required to pad the BIOS binary */
+# Required to pad the BIOS binary
 .org 0x0080000

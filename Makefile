@@ -4,8 +4,8 @@ all: melinda.bin
 obj:
 	mkdir -p obj
 
-obj/all_functions.asm: obj functions/*
-	python -c "import sys; print('\n'.join('.include \"' + x + '\"' for x in sys.argv[1:]))" functions/*.asm > obj/all_functions.asm
+obj/all_functions.asm: obj tablebuilder.py functions/*
+	python tablebuilder.py
 
 obj/melinda.o: *.asm obj/all_functions.asm
 	mips-linux-as main.asm -o $@
