@@ -12,7 +12,7 @@ abort_debug:
 initBios:
 	jal initRAM
 
-	j abort
+	j copy_and_run_shell
 
 # initialize first 64k here
 initRAM:

@@ -12,5 +12,8 @@ j initBios
 .include "init.asm"
 .include "obj/all_functions.asm"
 
+.org 0x30000
+.include "shell.asm"
+
 # Required to pad the BIOS binary
 .org 0x0080000
