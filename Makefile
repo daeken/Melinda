@@ -9,13 +9,13 @@ obj/all_functions.asm: obj util/tablebuilder.py functions/*
 
 obj/melinda.o: *.asm util/preprocess.py obj/all_functions.asm
 	python util/preprocess.py
-	cd obj/pp; mips-linux-as main.asm -o ../../$@
+	cd obj/pp; mipsel-linux-as main.asm -o ../../$@
 
 obj/melinda.tmp: obj/melinda.o
-	mips-linux-ld -o $@ obj/melinda.o --section-start=.text=0xBFC00000
+	mipsel-linux-ld -o $@ obj/melinda.o --section-start=.text=0xBFC00000
 
 melinda.bin: obj/melinda.tmp
-	mips-linux-objcopy -O binary -j .text obj/melinda.tmp $@
+	mipsel-linux-objcopy -O binary -j .text obj/melinda.tmp $@
 
 .PHONY : clean
 clean:
