@@ -11,9 +11,9 @@ tables = dict(
 	C=c_table, 
 	SYS=sys_table, 
 )
-with file('obj/all_functions.asm', 'w') as all_fp:
+with open('obj/all_functions.asm', 'w') as all_fp:
 	for fn in glob('functions/*.asm'):
-		first = file(fn).readline().strip()
+		first = open(fn).readline().strip()
 		if first.startswith('#$'):
 			first = first.split(' ')
 			name, entries = first[1], first[2:]
@@ -35,7 +35,7 @@ def write_dispatcher(dis, table, register):
 		w('beq $t0, %s, export_%s' % (register, name))
 	w('j abort_debug')
 
-with file('obj/dispatcher.asm', 'w') as dis:
+with open('obj/dispatcher.asm', 'w') as dis:
 	write_dispatcher(dis, 'A', '$t1')
 	write_dispatcher(dis, 'B', '$t1')
 	write_dispatcher(dis, 'C', '$t1')
