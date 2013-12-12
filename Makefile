@@ -2,13 +2,14 @@ all: melinda.bin
 	
 
 obj:
-	mkdir -p obj
+	mkdir -p obj obj/pp
 
-obj/all_functions.asm: obj tablebuilder.py functions/*
-	python tablebuilder.py
+obj/all_functions.asm: obj util/tablebuilder.py functions/*
+	python util/tablebuilder.py
 
-obj/melinda.o: *.asm obj/all_functions.asm
-	mips-linux-as main.asm -o $@
+obj/melinda.o: *.asm util/preprocess.py obj/all_functions.asm
+	python util/preprocess.py
+	cd obj/pp; mips-linux-as main.asm -o ../../$@
 
 obj/melinda.tmp: obj/melinda.o
 	mips-linux-ld -o $@ obj/melinda.o --section-start=.text=0xBFC00000
