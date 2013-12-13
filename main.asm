@@ -10,6 +10,7 @@ j initBios
 
 .org 0x200
 .include "misc.asm"
+.include "cdrom.asm"
 .include "init.asm"
 .include "obj/all_functions.asm"
 

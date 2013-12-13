@@ -1,5 +1,7 @@
 initBios:
+	li $sp, 0x801FFFF0
 	jal initRAM
+	jal cdInit
 
 	j copy_and_run_shell
 
