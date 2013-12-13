@@ -8,8 +8,8 @@ export_memset:
 
 	@loop:
 		sb $a1, 0($a0)
-		addi $a0, $a0, 1
-		addi $a2, $a2, -1
+		inc $a0
+		dec $a2
 		bne $0, $a2, @loop
 
 	@ret:
