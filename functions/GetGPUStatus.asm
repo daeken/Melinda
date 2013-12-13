@@ -2,7 +2,7 @@
 
 # GetGPUStatus()
 export_GetGPUStatus:
-	lui $t0, 0x1f80
-	ori $t0, 0x1814
+	pro
+	li $t0, 0x1f801814
 	lw $v0, 0($t0)
 	ret

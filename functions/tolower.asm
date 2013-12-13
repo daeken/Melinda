@@ -2,6 +2,7 @@
 
 # tolower(har)
 export_tolower:
+	pro
 	and $a0, $a0, 0xFF
 	addi $v0, $a0, 0
 	addi $t0, $a0, -0x41
